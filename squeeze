@@ -1,0 +1,8 @@
+#!/usr/bin/env lua
+-- Squeeze front-end script
+-- (c) Reuben Thomas  5th May 2011-17th May 2011
+
+require "json"
+require "squeeze"
+
+squeeze.squeeze (json.decode (io.open (arg[1]):read ("*a")))
