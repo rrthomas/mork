@@ -5,14 +5,14 @@
                  https://github.com/rrthomas/mork
 
 Mork provides automatic C bindings for Lua using ctypesgen-json and
-alien. (Mork is a friendly alien. However, it does not have three
-eyes: the name is a shallow analogy.) Mork is distributed under the
-MIT License, like Lua itself.
+alien. (Mork is a friendly alien. However, it cannot drink through its
+fingers. Indeed, it does not have fingers. It is a shallow analogy.)
+Mork is distributed under the MIT License, like Lua itself.
 
-alien can be found at http://alien.luaforge.net/
+alien is a libffi binding for Lua: http://alien.luaforge.net/
 
-ctypesgen-json is a fork of ctypesgen, the pure-Python wrapper
-generator: http://code.google.com/p/ctypesgen/
+ctypesgen-json turns C headers into JSON for use with libffi:
+https://github.com/rrthomas/ctypesgen-json
 
 
 Usage
