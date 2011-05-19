@@ -1,12 +1,12 @@
-                               squeeze
-                               -------
+                                 mork
+                                 ----
 
                 (c) Reuben Thomas 2011 <rrt@sc3d.org>
-                 https://github.com/rrthomas/squeeze
+                 https://github.com/rrthomas/mork
 
-Squeeze provides automatic C bindings for Lua using ctypesgen-json and
-alien. (Squeeze is a friendly alien. However, it does not have three
-eyes: the name is a shallow analogy.) Squeeze is distributed under the
+Mork provides automatic C bindings for Lua using ctypesgen-json and
+alien. (Mork is a friendly alien. However, it does not have three
+eyes: the name is a shallow analogy.) Mork is distributed under the
 MIT License, like Lua itself.
 
 alien can be found at http://alien.luaforge.net/
@@ -22,7 +22,7 @@ $ ctypesgen.py --all-headers --builtin-symbols --output-language=json /usr/inclu
 
 In Lua:
 
-require "squeeze"
+require "mork"
 require "json"
 
-module = squeeze.squeeze (json.decode (io.open ("foo.json"):read ("*a")))
+module = mork.mork (json.decode (io.open ("foo.json"):read ("*a")))

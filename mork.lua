@@ -1,8 +1,8 @@
--- Squeeze, the friendly alien
+-- Mork, the friendly alien
 -- Turns ctypesgen JSON output into alien input
 -- (c) Reuben Thomas  5th May 2011-17th May 2011
 
-module ("squeeze", package.seeall)
+module ("mork", package.seeall)
 
 require "std"
 require "alien"
@@ -18,13 +18,13 @@ local primitive_types = {
 
 local function alien_lookup (id)
   local function lookup (id)
-    return alien.default[id] -- FIXME: pass squeeze module to bind
+    return alien.default[id] -- FIXME: pass mork module to bind
   end
   local ok, func = pcall (lookup, id)
   return ok and func or nil
 end
 
-function squeeze (lib)
+function mork (lib)
   local cmodule = {}
 
   local function real_type (ty)
