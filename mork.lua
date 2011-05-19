@@ -17,6 +17,7 @@ local primitive_types = {
   String = "string",
 }
 
+-- Look up a function in alien without raising an error
 local function alien_lookup (id)
   local function lookup (id)
     return alien.default[id] -- FIXME: pass mork module to bind
