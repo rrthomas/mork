@@ -1,6 +1,6 @@
 -- Mork, the friendly alien
 -- Turns ctypesgen JSON output into alien input
--- (c) Reuben Thomas  5th May 2011-17th May 2011
+-- (c) Reuben Thomas 2011
 
 module ("mork", package.seeall)
 
