@@ -5,4 +5,4 @@
 require "json"
 require "mork"
 
-mork.mork (json.decode (io.open (arg[1]):read ("*a")))
+mork.bind (json.decode (io.open (arg[1]):read ("*a")))

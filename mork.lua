@@ -24,7 +24,7 @@ local function alien_lookup (id)
   return ok and func or nil
 end
 
-function mork (lib)
+function bind (lib)
   local cmodule = {}
 
   local function real_type (ty)

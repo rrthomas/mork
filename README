@@ -18,11 +18,14 @@ https://github.com/rrthomas/ctypesgen-json
 Usage
 -----
 
+First, turn a header file into JSON using ctypesgen-json:
+
 $ ctypesgen.py --all-headers --builtin-symbols --output-language=json /usr/include/foo.h -o foo.json
 
-In Lua:
+Then in Lua, Mork slurps up the JSON and generates alien bindings on
+the fly, returning a module:
 
 require "mork"
 require "json"
 
-module = mork.mork (json.decode (io.open ("foo.json"):read ("*a")))
+module = mork.bind (json.decode (io.open ("foo.json"):read ("*a")))
