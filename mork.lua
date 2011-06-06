@@ -1,8 +1,7 @@
--- Mork, the friendly alien
--- Turns ctypesgen JSON output into alien input
--- (c) Reuben Thomas 2011
--- Mork is distributed under the MIT license
-
+--- Mork, the friendly alien
+-- <br>Turns ctypesgen JSON output into alien input
+-- <br>© Reuben Thomas 2011
+-- <br>Mork is distributed under the MIT license
 module ("mork", package.seeall)
 
 require "std"
@@ -26,6 +25,9 @@ local function alien_lookup (id)
   return ok and func or nil
 end
 
+--- Turn a ctypesgen description into a library binding
+-- @param lib ctypesgen description, decoded into a Lua table
+-- @return a module of alien bindings
 function bind (lib)
   local cmodule = {}
 
