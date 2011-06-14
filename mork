@@ -1,8 +1,0 @@
-#!/usr/bin/env lua
--- Mork front-end script
--- (c) Reuben Thomas  5th May 2011-17th May 2011
-
-require "json"
-require "mork"
-
-mork.bind (json.decode (io.open (arg[1]):read ("*a")))
