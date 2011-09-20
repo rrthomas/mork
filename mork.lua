@@ -30,7 +30,7 @@ end
 -- @param ... list of headers (FIXME: Find them on search path)
 -- @return JSON binding
 function generate_binding (...)
-  return json.decode (io.shell ("ctypesgen.py --all-headers --builtin-symbols --output-language=json " ..
+  return json.decode (io.shell ("ctypesgen.py --all-headers --builtin-symbols --no-stddef-types --no-gnu-types --no-python-types --output-language=json " ..
       table.concat ({...}, " ")))
 end
 
