@@ -9,10 +9,10 @@ alien. (Mork is a friendly alien. However, it cannot drink through its
 fingers. Indeed, it does not have fingers. It is a shallow analogy.)
 Mork is distributed under the MIT License, like Lua itself.
 
-alien is a libffi binding for Lua: http://alien.luaforge.net/
+alien is a libffi binding for Lua: http://mascarenhas.github.com/alien/
 
 ctypesgen-json turns C headers into JSON for use with libffi:
-https://github.com/rrthomas/ctypesgen-json
+http://code.google.com/p/ctypesgen/
 
 
 Usage
