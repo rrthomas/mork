@@ -14,6 +14,8 @@ alien is a libffi binding for Lua: http://mascarenhas.github.com/alien/
 ctypesgen-json turns C headers into JSON for use with libffi:
 http://code.google.com/p/ctypesgen/
 
+It might be better to use cparser: http://sourceforge.net/projects/cparser/
+
 
 Usage
 -----
