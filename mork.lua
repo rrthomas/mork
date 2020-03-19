@@ -17,28 +17,31 @@ local primitive_types = {
   String = "string",
 }
 
--- Look up a function in alien without raising an error
-local function alien_lookup (id)
-  local function lookup (id)
-    return alien.default[id] -- FIXME: pass mork module to bind
-  end
-  local ok, func = pcall (lookup, id)
-  return ok and func or nil
-end
-
 --- Call ctypesgen on the given list of headers
+-- @param lib name of library to use (FIXME: Allow multiple libs)
 -- @param ... list of headers (FIXME: Find them on search path)
 -- @return JSON binding
-function generate_binding (...)
-  return json.decode (io.shell ("ctypesgen.py --all-headers --builtin-symbols --no-stddef-types --no-gnu-types --no-python-types --output-language=json " ..
-      table.concat ({...}, " ")))
+function generate_binding (lib, ...)
+  return bind (lib, json.decode (io.shell ("ctypesgen.py --all-headers --builtin-symbols --no-stddef-types --no-gnu-types --output-language=json " ..
+        table.concat ({...}, " "))))
 end
 
 --- Turn a ctypesgen description into a library binding
--- @param lib ctypesgen description, decoded into a Lua table
+-- @param name name of library
+-- @param desc ctypesgen description, decoded into a Lua table
 -- @return a module of alien bindings
-function bind (lib)
+function bind (name, desc)
   local cmodule = {}
+  local lib = alien.load (name)
+
+  -- Look up a function in alien without raising an error
+  local function alien_lookup (id)
+    local function lookup (id)
+      return lib[id]
+    end
+    local ok, func = pcall (lookup, id)
+    return ok and func or nil
+  end
 
   local function real_type (ty)
     if ty.name then
@@ -86,8 +89,8 @@ function bind (lib)
     function (obj)
       local func = alien_lookup (obj.name)
       if func then
+        func:types (real_type (obj["return"]), unpack (list.map (real_type, obj.args or {})))
         cmodule[obj.name] = func
-        cmodule[obj.name]:types (real_type (obj["return"]), unpack (list.map (real_type, obj.args or {})))
       else
         print ("no such function `" .. obj.name .. "'")
       end
@@ -126,7 +129,8 @@ function bind (lib)
     end,
   }
 
-  for _, obj in ipairs (lib) do
+  for _, obj in ipairs (desc) do
+    print (obj.name)
     if not converter[obj.type] then
       error ("bad object type `" .. obj.type .. "'")
     end
